@@ -2,6 +2,8 @@ package com.example.projet_service_cloud.app;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,9 +23,9 @@ public class PersonnageService {
      * *                                    *
      * **************************************
      */
-    public List<PersonnageEntity> getAllPersonnages() {
-        List<PersonnageEntity> personnageEntities = personnageRepository.findAll();
-        return personnageEntities;
+    public Page<PersonnageEntity> getAllPersonnages(int page, int size) {
+        PageRequest pageable = PageRequest.of(page, size);
+        return personnageRepository.findAll(pageable);
     }
     public PersonnageEntity getPersonnageById(UUID id) throws PersonnageNotFoundException {
         PersonnageEntity eleve = personnageRepository.findById(id)
