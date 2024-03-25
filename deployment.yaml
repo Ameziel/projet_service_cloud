@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projet-service-cloud-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: projet-service-cloud
+  template:
+    metadata:
+      labels:
+        app: projet-service-cloud
+    spec:
+      containers:
+        - name: projet-service-cloud
+          image: mathyslison/projet_service_cloud:latest
+          ports:
+            - containerPort: 5432
