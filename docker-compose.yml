@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Service de l'application Spring Boot
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/courscloud
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  # Service de la base de données PostgreSQL
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: courscloud
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
