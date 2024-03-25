@@ -6,6 +6,6 @@ spec:
   type: LoadBalancer
   ports:
     - port: 5432
-      targetPort: 5433
+      targetPort: 5432
   selector:
     app: projet-service-cloud
