@@ -15,5 +15,6 @@ spec:
       containers:
         - name: projet-service-cloud
           image: mathyslison/projet_service_cloud:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5432
