@@ -17,4 +17,4 @@ spec:
           image: mathyslison/projet_service_cloud:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 5432
+            - containerPort: 8080

@@ -5,7 +5,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 5432
-      targetPort: 5432
+    - port: 80        
+      targetPort: 8080    
   selector:
     app: projet-service-cloud
+
